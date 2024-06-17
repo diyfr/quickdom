@@ -1,6 +1,7 @@
 
 # QuickDom
 QuickDom est une bibliothèque légère pour créer et manipuler facilement des éléments du DOM en TypeScript.
+Une solution pour réaliser simplement des single pages en vanilla js  
 ## Installation
 Vous pouvez installer QuickDom via npm :
 ```sh
@@ -38,7 +39,7 @@ const link = qd('a', {
 });
 ```
 ### Exemple Complet
-Voici un exemple complet de création d'une structure HTML complexe :
+Voici un exemple complet de création d'une structure HTML:
 ```typescript
 const container = qd('div', {
   className: 'rounded-lg border bg-card text-card-foreground shadow-sm',
@@ -72,6 +73,6 @@ type ElementOptions<T extends HTMLElement> = Partial<T> & {
 ```
 Un type pour définir les options et attributs de l'élément HTML.
 ## Contributions
-Les contributions sont les bienvenues ! Veuillez ouvrir une issue ou soumettre une pull request sur [GitHub](https://github.com/yourusername/quickdom).
+Les contributions sont les bienvenues ! Veuillez ouvrir une issue ou soumettre une pull request sur [GitHub](https://github.com/diyfr/quickdom/issues).
 ## Licence
 QuickDom est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
