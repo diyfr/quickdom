@@ -1,6 +1,6 @@
 {
   "name": "quickdom",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "A lightweight library for creating and manipulating DOM elements.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
