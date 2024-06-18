@@ -5,12 +5,9 @@ const config: Config.InitialOptions = {
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest'
-  },
-  globals: {
-    'ts-jest': {
+    '^.+\\.tsx?$': ['ts-jest',{
       tsconfig: 'tsconfig.json'
-    }
+    }]
   },
   moduleNameMapper: {
     '^src/(.*)$': '<rootDir>/src/$1'
