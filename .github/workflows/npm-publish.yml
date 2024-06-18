@@ -26,10 +26,11 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-          registry-url: https://registry.npmjs.org/
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@diyfr'
       - run: npm install -g npm
       - run: npm ci
       - run: npm publish --provenance --access public
