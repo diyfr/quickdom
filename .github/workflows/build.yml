@@ -1,0 +1,45 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!master'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+
+      - name: Setup Node.js
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version-file: 20.x
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install Dependencies
+        id: install
+        run: npm ci
+
+      - name: Build
+        id: build
+        run: npm run build
+
+      - name: Test
+        id: test
+        run: npm run test
+      - name: Check npm credentials
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_SECRET}}      
+        id: whoami
+        run: npm whoami
+
