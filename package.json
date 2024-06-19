@@ -1,9 +1,9 @@
 {
-  "name": "@diyfr/quickdom",
+  "name": "quickdom",
   "version": "0.9.1",
   "description": "A lightweight library for creating and manipulating DOM elements in typescript",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "ts-node --files ./node_modules/jest/bin/jest",
