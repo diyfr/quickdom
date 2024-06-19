@@ -1,6 +1,6 @@
 {
   "name": "@diyfr/quickdom",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "A lightweight library for creating and manipulating DOM elements in typescript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

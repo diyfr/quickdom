@@ -1,7 +1,7 @@
 
 # QuickDom
 QuickDom est une bibliothèque légère pour créer et manipuler facilement des éléments du DOM en TypeScript.
-Une solution pour réaliser simplement des single pages en vanilla js  
+Une solution pour réaliser simplement des singles pages en vanilla js  
 ## Installation
 Vous pouvez installer QuickDom via npm :
 ```sh
@@ -68,7 +68,6 @@ Crée un nouvel élément HTML.
 #### `ElementOptions`
 ```typescript
 type ElementOptions<T extends HTMLElement> = Partial<T> & {
-  classList?: string[];
   [key: string]: any;
 }
 ```
