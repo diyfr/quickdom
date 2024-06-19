@@ -1,39 +1,86 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: Node.js Package
+name: Continuous Delivery
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
+  release:
+    name: Create Release
     runs-on: ubuntu-latest
+
+    # Only run this job if one of the following is true:
+    # - It was run manually.
+    # - A PR was merged that was not from Dependabot or a fork.
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (
+        startsWith(github.head_ref, 'dependabot/') == false &&
+        github.event.pull_request.head.repo.fork == false
+      )
+
+    outputs:
+      tag: v${{ steps.tag.outputs.version }}
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
         with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
+          fetch-tags: true
+
+      - name: Tag
+        id: tag
+        uses: issue-ops/semver@v1.2.0
+        with:
+          manifest-path: package.json
+          workspace: ${{ github.workspace }}
+          ref: master
+
+      - name: Create Release
+        id: release
+        uses: issue-ops/releaser@v1.0.0
+        with:
+          tag: v${{ steps.tag.outputs.version }}
 
   publish-npm:
-    needs: build
+    needs: release
     runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
         with:
-          node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org/'
-      - run: npm install -g npm
-      - run: npm ci && npm whoami
+          fetch-tags: true
+
+      - name: Setup Node.js
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version-file: 20.x
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install Dependencies
+        id: install
+        run: npm ci
+
+      - name: Build
+        id: build
+        run: npm run build
+
+      - name: Test
+        id: test
+        run: npm run test
+
+      - name: Publish
+        id: publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_SECRET}}
-      - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_SECRET}}
+        run: |
+          npm whoami
+          npm publish --provenance --access public          
