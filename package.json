@@ -1,5 +1,5 @@
 {
-  "name": "quickdom",
+  "name": "@diyfr/quickdom",
   "version": "0.9.1",
   "description": "A lightweight library for creating and manipulating DOM elements in typescript",
   "main": "lib/index.js",
