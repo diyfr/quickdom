@@ -5,14 +5,15 @@ Une solution pour réaliser simplement des single pages en vanilla js
 ## Installation
 Vous pouvez installer QuickDom via npm :
 ```sh
-npm install quickdom
+npm install @diyfr/quickdom
 ```
 ## Utilisation
 ### Importation
 Pour utiliser QuickDom, commencez par importer la bibliothèque dans votre fichier TypeScript :
 ```typescript
-import { QuickDom } from 'quickdom';
-import { qd } from 'quickdom';
+import { QuickDom } from '@diyfr/quickdom';
+/* OR */
+import { qd } from '@diyfr/quickdom';
 ```
 ### Création d'un Élément
 Vous pouvez créer un nouvel élément HTML avec des options personnalisées :

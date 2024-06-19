@@ -1,4 +1,4 @@
-import { QuickDom, qd } from '../src/quickdom';
+import { QuickDom, qd } from '../src/index';
 
 test('should create a div element with class and id', () => {
   const div = QuickDom.new('div', { className: 'container', id: 'testDiv' });

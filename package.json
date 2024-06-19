@@ -1,10 +1,10 @@
 {
   "name": "@diyfr/quickdom",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "A lightweight library for creating and manipulating DOM elements in typescript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files" :[
+  "files": [
     "lib/index.js",
     "lib/index.d.ts"
   ],
@@ -27,6 +27,16 @@
   ],
   "author": "diyfr",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "default": "./build/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "bugs": {
     "url": "https://github.com/diyfr/quickdom/issues"
   },
