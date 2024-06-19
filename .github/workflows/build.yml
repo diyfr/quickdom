@@ -39,7 +39,7 @@ jobs:
         run: npm run test
       - name: Check npm credentials
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_SECRET}}      
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}      
         id: whoami
         run: npm whoami
 
