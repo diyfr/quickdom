@@ -1,10 +1,10 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 /**
  * Les options de création pour les éléments HTML
  */
 export type ElementOptions<K extends keyof HTMLElementTagNameMap> = Partial<
   HTMLElementTagNameMap[K]
 > & {
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
   [attr: string]: any // Permettre des attributs personnalisés
 }
 
