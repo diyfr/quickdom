@@ -1,0 +1,9 @@
+.github
+.prettierrc.js
+.gitignore
+jest.config.js
+package-lock.json
+tsconfig.json
+node_modules
+tests
+src
