@@ -1,5 +1,5 @@
 {
-  "name": "@diyfr/quickdom",
+  "name": "quickdom",
   "version": "0.9.1",
   "description": "A lightweight library for creating and manipulating DOM elements in typescript",
   "main": "lib/index.js",
@@ -21,7 +21,7 @@
     "library",
     "lightweight"
   ],
-  "author": "@diyfr",
+  "author": "diyfr",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/diyfr/quickdom/issues"

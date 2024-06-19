@@ -31,8 +31,7 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org/'
       - run: npm install -g npm
-      - run: npm ci
-      - run: npm whoami
+      - run: npm ci && npm whoami
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_SECRET}}
       - run: npm publish --provenance --access public
